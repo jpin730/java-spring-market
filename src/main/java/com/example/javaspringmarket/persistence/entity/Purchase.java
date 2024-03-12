@@ -3,6 +3,7 @@ package com.example.javaspringmarket.persistence.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "purchase")
@@ -17,6 +18,13 @@ public class Purchase {
     private LocalDateTime date;
 
     private String state;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    private Customer customer;
+
+    @OneToMany(mappedBy = "purchase")
+    private List<PurchaseProduct> products;
 
     public Integer getId() {
         return id;

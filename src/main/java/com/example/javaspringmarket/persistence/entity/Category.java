@@ -2,6 +2,8 @@ package com.example.javaspringmarket.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "category")
 public class Category {
@@ -12,6 +14,9 @@ public class Category {
     private String description;
 
     private Boolean status;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
 
     public Integer getId() {
         return id;

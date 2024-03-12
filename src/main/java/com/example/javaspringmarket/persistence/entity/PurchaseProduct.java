@@ -1,6 +1,8 @@
 package com.example.javaspringmarket.persistence.entity;
 
 import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 public class PurchaseProduct {
     @EmbeddedId
@@ -11,6 +13,14 @@ public class PurchaseProduct {
     private Double total;
 
     private Boolean status;
+
+    @ManyToOne
+    @JoinColumn(name = "purchase_id", insertable = false, updatable = false)
+    private Purchase purchase;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Product product;
 
     public PurchaseProductPk getId() {
         return id;
