@@ -6,7 +6,7 @@ category;
 CREATE TABLE category (
     "id" SERIAL NOT NULL,
     "description" VARCHAR(45) NOT NULL,
-    "state" BOOLEAN NOT NULL,
+    "status" BOOLEAN NOT NULL,
     PRIMARY KEY ("id")
 );
 CREATE TABLE product (
@@ -15,7 +15,7 @@ CREATE TABLE product (
     "category_id" INT NOT NULL,
     "price" DECIMAL(16, 2) NOT NULL,
     "stock" INT NOT NULL,
-    "state" BOOLEAN NOT NULL,
+    "status" BOOLEAN NOT NULL,
     PRIMARY KEY ("id"),
     CONSTRAINT "fk_product_category" FOREIGN KEY ("category_id") REFERENCES category ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
@@ -29,7 +29,7 @@ CREATE TABLE purchase (
     "id" SERIAL NOT NULL,
     "customer_id" INT NOT NULL,
     "date" TIMESTAMP NOT NULL,
-    "state" CHAR(1) NOT NULL,
+    "status" BOOLEAN NOT NULL,
     PRIMARY KEY ("id"),
     CONSTRAINT "fk_purchase_customer" FOREIGN KEY ("customer_id") REFERENCES customer ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
@@ -38,7 +38,7 @@ CREATE TABLE purchase_product (
     "product_id" INT NOT NULL,
     "quantity" INT NOT NULL,
     "total" DECIMAL(16, 2) NOT NULL,
-    "state" BOOLEAN NOT NULL,
+    "status" BOOLEAN NOT NULL,
     PRIMARY KEY ("purchase_id", "product_id"),
     CONSTRAINT "fk_purchase_product_product" FOREIGN KEY ("product_id") REFERENCES product ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
     CONSTRAINT "fk_purchase_product_purchase" FOREIGN KEY ("purchase_id") REFERENCES purchase ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
