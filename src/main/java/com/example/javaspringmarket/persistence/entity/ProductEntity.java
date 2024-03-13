@@ -6,25 +6,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String name;
-
     @Column(name = "category_id")
     private Integer categoryId;
-
     private Double price;
-
     private Integer stock;
-
     private Boolean status;
 
     @ManyToOne
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
-    private Category category;
+    private CategoryEntity category;
 
     @OneToMany(mappedBy = "product")
     private List<PurchaseProduct> purchases;
