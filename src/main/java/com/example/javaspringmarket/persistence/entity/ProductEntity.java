@@ -71,4 +71,20 @@ public class ProductEntity {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
+
+    public List<PurchaseProduct> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<PurchaseProduct> purchases) {
+        this.purchases = purchases;
+    }
 }

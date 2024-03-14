@@ -9,11 +9,11 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface ProductMapper {
     @Mappings({
             @Mapping(target = "active", source = "status"),
-            @Mapping(target = "category", ignore = true)
+            @Mapping(target = "category", source = "category"),
     })
     Product toProduct(ProductEntity product);
 
