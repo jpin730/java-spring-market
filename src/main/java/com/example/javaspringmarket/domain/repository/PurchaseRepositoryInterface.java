@@ -10,9 +10,9 @@ public interface PurchaseRepositoryInterface {
 
     Optional<Purchase> getById(int purchaseId);
 
-    Optional<Purchase> getByClientId(int clientId);
+    Optional<List<Purchase>> getByCustomerId(int customerId);
 
-    Purchase save(Purchase product);
+    Purchase save(Purchase purchase);
 
-    void delete(int productId);
+    void delete(int purchaseId);
 }
