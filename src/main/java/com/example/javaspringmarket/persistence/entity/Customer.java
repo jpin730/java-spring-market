@@ -17,7 +17,7 @@ public class Customer {
     private String email;
 
     @OneToMany(mappedBy = "customer")
-    private List<Purchase> purchases;
+    private List<PurchaseEntity> purchases;
 
     public Integer getId() {
         return id;

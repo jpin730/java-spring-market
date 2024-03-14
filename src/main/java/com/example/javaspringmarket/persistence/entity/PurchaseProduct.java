@@ -16,7 +16,7 @@ public class PurchaseProduct {
 
     @ManyToOne
     @JoinColumn(name = "purchase_id", insertable = false, updatable = false)
-    private Purchase purchase;
+    private PurchaseEntity purchase;
 
     @ManyToOne
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
