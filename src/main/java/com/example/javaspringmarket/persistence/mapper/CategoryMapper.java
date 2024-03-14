@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.persistence.mapper;
 
-import com.example.javaspringmarket.domain.Category;
+import com.example.javaspringmarket.domain.dto.Category;
 import com.example.javaspringmarket.persistence.entity.CategoryEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

@@ -1,4 +1,4 @@
-package com.example.javaspringmarket.domain;
+package com.example.javaspringmarket.domain.dto;
 
 import com.example.javaspringmarket.persistence.entity.PurchaseProductEntity;
 

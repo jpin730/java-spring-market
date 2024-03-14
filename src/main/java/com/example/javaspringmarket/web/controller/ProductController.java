@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.web.controller;
 
-import com.example.javaspringmarket.domain.Product;
+import com.example.javaspringmarket.domain.dto.Product;
 import com.example.javaspringmarket.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

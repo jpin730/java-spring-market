@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.domain.repository;
 
-import com.example.javaspringmarket.domain.Purchase;
+import com.example.javaspringmarket.domain.dto.Purchase;
 
 import java.util.List;
 import java.util.Optional;

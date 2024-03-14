@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.persistence.repository;
 
-import com.example.javaspringmarket.domain.Purchase;
+import com.example.javaspringmarket.domain.dto.Purchase;
 import com.example.javaspringmarket.domain.repository.PurchaseRepositoryInterface;
 import com.example.javaspringmarket.persistence.crud.PurchaseCrudRepository;
 import com.example.javaspringmarket.persistence.entity.PurchaseEntity;

@@ -1,14 +1,13 @@
 package com.example.javaspringmarket.persistence.mapper;
 
-import java.util.List;
-
+import com.example.javaspringmarket.domain.dto.Product;
+import com.example.javaspringmarket.persistence.entity.ProductEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import com.example.javaspringmarket.domain.Product;
-import com.example.javaspringmarket.persistence.entity.ProductEntity;
+import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface ProductMapper {
