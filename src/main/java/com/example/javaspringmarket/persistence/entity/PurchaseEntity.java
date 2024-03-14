@@ -57,4 +57,20 @@ public class PurchaseEntity {
     public void setState(String state) {
         this.state = state;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<PurchaseProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<PurchaseProductEntity> products) {
+        this.products = products;
+    }
 }

@@ -9,7 +9,6 @@ public class Purchase {
     private int id;
     private int customerId;
     private LocalDateTime date;
-    private String comment;
     private String state;
     private List<PurchaseProductEntity> products;
 
@@ -35,14 +34,6 @@ public class Purchase {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public String getState() {
