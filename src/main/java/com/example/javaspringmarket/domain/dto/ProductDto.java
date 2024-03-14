@@ -1,13 +1,13 @@
 package com.example.javaspringmarket.domain.dto;
 
-public class Product {
+public class ProductDto {
     private int id;
     private String name;
     private int categoryId;
     private double price;
     private int stock;
     private boolean active;
-    private Category category;
+    private CategoryDto category;
 
     public int getId() {
         return id;
@@ -57,11 +57,11 @@ public class Product {
         this.active = active;
     }
 
-    public Category getCategory() {
+    public CategoryDto getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(CategoryDto category) {
         this.category = category;
     }
 }

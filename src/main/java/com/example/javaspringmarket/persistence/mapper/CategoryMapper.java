@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.persistence.mapper;
 
-import com.example.javaspringmarket.domain.dto.Category;
+import com.example.javaspringmarket.domain.dto.CategoryDto;
 import com.example.javaspringmarket.persistence.entity.CategoryEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -13,8 +13,8 @@ public interface CategoryMapper {
             @Mapping(target = "name", source = "description"),
             @Mapping(target = "active", source = "status")
     })
-    Category toCategory(CategoryEntity categoryEntity);
+    CategoryDto toCategory(CategoryEntity categoryEntity);
 
     @InheritInverseConfiguration
-    CategoryEntity toCategoryEntity(Category category);
+    CategoryEntity toCategoryEntity(CategoryDto category);
 }

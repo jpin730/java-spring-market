@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.web.controller;
 
-import com.example.javaspringmarket.domain.dto.Product;
+import com.example.javaspringmarket.domain.dto.ProductDto;
 import com.example.javaspringmarket.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,29 +16,29 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping()
-    public ResponseEntity<List<Product>> getAll() {
+    public ResponseEntity<List<ProductDto>> getAll() {
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getById(@PathVariable("id") int productId) {
+    public ResponseEntity<ProductDto> getById(@PathVariable("id") int productId) {
         return productService.getById(productId).map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity<List<Product>> getByCategory(@PathVariable("categoryId") int categoryId) {
+    public ResponseEntity<List<ProductDto>> getByCategory(@PathVariable("categoryId") int categoryId) {
         return productService.getByCategory(categoryId).map(products -> new ResponseEntity<>(products, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping()
-    public ResponseEntity<Product> save(@RequestBody Product product) {
+    public ResponseEntity<ProductDto> save(@RequestBody ProductDto product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable("id") int productId, @RequestBody Product product) {
+    public ResponseEntity<ProductDto> update(@PathVariable("id") int productId, @RequestBody ProductDto product) {
         return new ResponseEntity<>(productService.update(productId, product), HttpStatus.OK);
     }
 

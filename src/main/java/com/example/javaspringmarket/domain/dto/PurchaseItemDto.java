@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.domain.dto;
 
-public class PurchaseItem {
+public class PurchaseItemDto {
     private int productId;
     private int quantity;
     private double total;

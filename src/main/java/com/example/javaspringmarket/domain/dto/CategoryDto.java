@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.domain.dto;
 
-public class Category {
+public class CategoryDto {
     private int id;
     private String name;
     private boolean active;

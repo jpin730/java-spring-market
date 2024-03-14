@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.domain.service;
 
-import com.example.javaspringmarket.domain.dto.Product;
+import com.example.javaspringmarket.domain.dto.ProductDto;
 import com.example.javaspringmarket.domain.repository.ProductRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,28 +13,28 @@ public class ProductService {
     @Autowired
     private ProductRepositoryInterface productRepository;
 
-    public List<Product> getAll() {
+    public List<ProductDto> getAll() {
         return productRepository.getAll();
     }
 
-    public Optional<Product> getById(int id) {
+    public Optional<ProductDto> getById(int id) {
         return productRepository.getById(id);
     }
 
-    public Optional<List<Product>> getByCategory(int categoryId) {
+    public Optional<List<ProductDto>> getByCategory(int categoryId) {
         return productRepository.getByCategory(categoryId);
     }
 
-    public Optional<List<Product>> getScarceProducts(int quantity) {
+    public Optional<List<ProductDto>> getScarceProducts(int quantity) {
         return productRepository.getScarceProducts(quantity);
     }
 
-    public Product save(Product product) {
+    public ProductDto save(ProductDto product) {
         return productRepository.save(product);
     }
 
-    public Product update(int productId, Product product) {
-        Optional<Product> productToUpdate = getById(productId);
+    public ProductDto update(int productId, ProductDto product) {
+        Optional<ProductDto> productToUpdate = getById(productId);
         if (productToUpdate.isEmpty()) {
             return null;
         }

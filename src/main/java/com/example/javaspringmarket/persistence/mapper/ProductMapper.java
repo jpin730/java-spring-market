@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.persistence.mapper;
 
-import com.example.javaspringmarket.domain.dto.Product;
+import com.example.javaspringmarket.domain.dto.ProductDto;
 import com.example.javaspringmarket.persistence.entity.ProductEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -15,13 +15,13 @@ public interface ProductMapper {
             @Mapping(target = "active", source = "status"),
             @Mapping(target = "category", source = "category"),
     })
-    Product toProduct(ProductEntity product);
+    ProductDto toProduct(ProductEntity product);
 
-    List<Product> toProducts(List<ProductEntity> products);
+    List<ProductDto> toProducts(List<ProductEntity> products);
 
     @InheritInverseConfiguration
     @Mappings({
             @Mapping(target = "purchases", ignore = true),
     })
-    ProductEntity toProductEntity(Product product);
+    ProductEntity toProductEntity(ProductDto product);
 }

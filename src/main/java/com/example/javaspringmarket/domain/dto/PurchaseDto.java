@@ -5,7 +5,7 @@ import com.example.javaspringmarket.persistence.entity.PurchaseProductEntity;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Purchase {
+public class PurchaseDto {
     private int id;
     private int customerId;
     private LocalDateTime date;

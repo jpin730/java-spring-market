@@ -1,18 +1,18 @@
 package com.example.javaspringmarket.domain.repository;
 
-import com.example.javaspringmarket.domain.dto.Purchase;
+import com.example.javaspringmarket.domain.dto.PurchaseDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PurchaseRepositoryInterface {
-    List<Purchase> getAll();
+    List<PurchaseDto> getAll();
 
-    Optional<Purchase> getById(int purchaseId);
+    Optional<PurchaseDto> getById(int purchaseId);
 
-    Optional<List<Purchase>> getByCustomerId(int customerId);
+    Optional<List<PurchaseDto>> getByCustomerId(int customerId);
 
-    Purchase save(Purchase purchase);
+    PurchaseDto save(PurchaseDto purchase);
 
     void delete(int purchaseId);
 }
