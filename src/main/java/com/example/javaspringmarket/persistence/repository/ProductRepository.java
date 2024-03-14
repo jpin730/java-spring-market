@@ -1,4 +1,4 @@
-package com.example.javaspringmarket.persistence;
+package com.example.javaspringmarket.persistence.repository;
 
 import com.example.javaspringmarket.domain.Product;
 import com.example.javaspringmarket.domain.repository.ProductRepositoryInterface;
