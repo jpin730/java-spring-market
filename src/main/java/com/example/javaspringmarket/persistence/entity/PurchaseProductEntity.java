@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "purchase_product")
-public class PurchaseProduct {
+public class PurchaseProductEntity {
     @EmbeddedId
     private PurchaseProductPk id;
 

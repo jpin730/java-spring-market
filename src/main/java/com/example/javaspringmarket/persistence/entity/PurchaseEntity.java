@@ -24,7 +24,7 @@ public class PurchaseEntity {
     private Customer customer;
 
     @OneToMany(mappedBy = "purchase")
-    private List<PurchaseProduct> products;
+    private List<PurchaseProductEntity> products;
 
     public Integer getId() {
         return id;

@@ -22,7 +22,7 @@ public class ProductEntity {
     private CategoryEntity category;
 
     @OneToMany(mappedBy = "product")
-    private List<PurchaseProduct> purchases;
+    private List<PurchaseProductEntity> purchases;
 
     public Integer getId() {
         return id;
@@ -80,11 +80,11 @@ public class ProductEntity {
         this.category = category;
     }
 
-    public List<PurchaseProduct> getPurchases() {
+    public List<PurchaseProductEntity> getPurchases() {
         return purchases;
     }
 
-    public void setPurchases(List<PurchaseProduct> purchases) {
+    public void setPurchases(List<PurchaseProductEntity> purchases) {
         this.purchases = purchases;
     }
 }

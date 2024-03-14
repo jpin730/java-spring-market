@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.domain;
 
-import com.example.javaspringmarket.persistence.entity.PurchaseProduct;
+import com.example.javaspringmarket.persistence.entity.PurchaseProductEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,7 +11,7 @@ public class Purchase {
     private LocalDateTime date;
     private String comment;
     private String state;
-    private List<PurchaseProduct> products;
+    private List<PurchaseProductEntity> products;
 
     public int getId() {
         return id;
@@ -53,11 +53,11 @@ public class Purchase {
         this.state = state;
     }
 
-    public List<PurchaseProduct> getProducts() {
+    public List<PurchaseProductEntity> getProducts() {
         return products;
     }
 
-    public void setProducts(List<PurchaseProduct> products) {
+    public void setProducts(List<PurchaseProductEntity> products) {
         this.products = products;
     }
 }
