@@ -33,6 +33,23 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    public Product update(int productId, Product product) {
+        Optional<Product> productToUpdate = getById(productId);
+        if (productToUpdate.isEmpty()) {
+            return null;
+        }
+        productToUpdate.map(product1 -> {
+            product1.setName(product.getName());
+            product1.setCategoryId(product.getCategoryId());
+            product1.setPrice(product.getPrice());
+            product1.setStock(product.getStock());
+            product1.setActive(product.isActive());
+            return productRepository.save(product1);
+        });
+
+        return productToUpdate.get();
+    }
+
     public boolean delete(int productId) {
         return getById(productId).map(product -> {
             productRepository.delete(productId);
