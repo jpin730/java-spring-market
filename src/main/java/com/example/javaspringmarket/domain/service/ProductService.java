@@ -15,8 +15,8 @@ public class ProductService {
     @Autowired
     private ProductRepositoryInterface productRepository;
 
-    public List<ProductDto> getAll() {
-        return productRepository.getAll();
+    public List<ProductDto> getAll(Optional<Integer> categoryId) {
+        return categoryId.map(id -> productRepository.getByCategory(id)).orElse(productRepository.getAll());
     }
 
     public Optional<ProductDto> getById(Integer id) {

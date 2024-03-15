@@ -27,6 +27,12 @@ public class ProductRepository implements ProductRepositoryInterface {
     }
 
     @Override
+    public List<ProductDto> getByCategory(Integer categoryId) {
+        List<ProductEntity> entities = productCrudRepository.findByCategoryId(categoryId);
+        return productMapper.toDtoList(entities);
+    }
+
+    @Override
     public Optional<ProductDto> getById(Integer id) {
         Optional<ProductEntity> entity = productCrudRepository.findById(id);
         return entity.map(product -> productMapper.toDto(product));

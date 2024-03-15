@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -18,8 +19,8 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<ProductDto>> getAll() {
-        return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<ProductDto>> getAll(@RequestParam(value = "category", required = false) Optional<Integer> categoryId) {
+        return new ResponseEntity<>(productService.getAll(categoryId), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -43,7 +44,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") int productId) {
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer productId) {
         if (productService.delete(productId)) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
