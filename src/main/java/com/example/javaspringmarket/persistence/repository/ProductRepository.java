@@ -35,7 +35,7 @@ public class ProductRepository implements ProductRepositoryInterface {
     @Override
     public Optional<ProductDto> getById(Integer id) {
         Optional<ProductEntity> entity = productCrudRepository.findById(id);
-        return entity.map(product -> productMapper.toDto(product));
+        return entity.map(productMapper::toDto);
     }
 
     @Override
