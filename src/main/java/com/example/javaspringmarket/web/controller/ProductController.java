@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -19,8 +18,9 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<ProductDto>> getAll(@RequestParam(value = "category", required = false) Optional<Integer> categoryId) {
-        return new ResponseEntity<>(productService.getAll(categoryId), HttpStatus.OK);
+    public ResponseEntity<List<ProductDto>> getAll(@RequestParam(value = "category", required = false) Integer categoryId) {
+        List<ProductDto> products = categoryId != null ? productService.getByCategory(categoryId) : productService.getAll();
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
