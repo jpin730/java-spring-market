@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -18,15 +19,25 @@ public class CategoryService {
         return categoryRepository.getAll();
     }
 
-    public String create(CategoryCreateDto category) {
-        return "create";
+    public Optional<CategoryDto> getById(Integer id) {
+        return categoryRepository.getById(id);
     }
 
-    public String update(CategoryUpdateDto category) {
-        return "update";
+    public CategoryDto create(CategoryCreateDto category) {
+        return categoryRepository.save(category);
     }
 
-    public String delete(Integer id) {
-        return "delete";
+    public Boolean update(CategoryUpdateDto category) {
+        return getById(category.getId()).map(found -> {
+            categoryRepository.save(category);
+            return true;
+        }).orElse(false);
+    }
+
+    public Boolean delete(Integer id) {
+        return getById(id).map(category -> {
+            categoryRepository.delete(id);
+            return true;
+        }).orElse(false);
     }
 }

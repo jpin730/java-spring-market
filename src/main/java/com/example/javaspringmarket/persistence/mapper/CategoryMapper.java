@@ -1,5 +1,6 @@
 package com.example.javaspringmarket.persistence.mapper;
 
+import com.example.javaspringmarket.domain.dto.CategoryCreateDto;
 import com.example.javaspringmarket.domain.dto.CategoryDto;
 import com.example.javaspringmarket.persistence.entity.CategoryEntity;
 import org.mapstruct.InheritInverseConfiguration;
@@ -15,6 +16,7 @@ public interface CategoryMapper {
     List<CategoryDto> toDtoList(List<CategoryEntity> categories);
 
     @InheritInverseConfiguration
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "products", ignore = true)
-    CategoryEntity toEntity(CategoryDto category);
+    CategoryEntity toEntity(CategoryCreateDto category);
 }

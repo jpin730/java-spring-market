@@ -5,6 +5,8 @@ import com.example.javaspringmarket.domain.dto.CategoryDto;
 import com.example.javaspringmarket.domain.dto.CategoryUpdateDto;
 import com.example.javaspringmarket.domain.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,22 +18,22 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping
-    public List<CategoryDto> getAll() {
-        return categoryService.getAll();
+    public ResponseEntity<List<CategoryDto>> getAll() {
+        return new ResponseEntity<>(categoryService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping
-    public String create(@RequestBody CategoryCreateDto body) {
-        return categoryService.create(body);
+    public ResponseEntity<CategoryDto> create(@RequestBody CategoryCreateDto body) {
+        return new ResponseEntity<>(categoryService.create(body), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public String update(@RequestBody CategoryUpdateDto body) {
-        return categoryService.update(body);
+    public ResponseEntity<Void> update(@RequestBody CategoryUpdateDto body) {
+        return new ResponseEntity<>(categoryService.update(body) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Integer categoryId) {
-        return categoryService.delete(categoryId);
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer categoryId) {
+        return new ResponseEntity<>(categoryService.delete(categoryId) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }
