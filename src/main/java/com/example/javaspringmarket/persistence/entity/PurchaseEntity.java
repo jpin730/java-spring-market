@@ -16,7 +16,7 @@ public class PurchaseEntity {
     private Boolean paid;
 
     @Column(name = "customer_id")
-    private String customerId;
+    private Integer customerId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
@@ -49,11 +49,11 @@ public class PurchaseEntity {
         this.paid = paid;
     }
 
-    public String getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
