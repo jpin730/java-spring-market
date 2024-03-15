@@ -1,10 +1,13 @@
 package com.example.javaspringmarket.web.controller;
 
 import com.example.javaspringmarket.domain.dto.CategoryCreateDto;
+import com.example.javaspringmarket.domain.dto.CategoryDto;
 import com.example.javaspringmarket.domain.dto.CategoryUpdateDto;
 import com.example.javaspringmarket.domain.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/categories")
@@ -13,7 +16,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping
-    public String getAll() {
+    public List<CategoryDto> getAll() {
         return categoryService.getAll();
     }
 
