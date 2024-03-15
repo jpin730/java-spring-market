@@ -1,6 +1,8 @@
 package com.example.javaspringmarket.persistence.mapper;
 
+import com.example.javaspringmarket.domain.dto.customer.CustomerCreateDto;
 import com.example.javaspringmarket.domain.dto.customer.CustomerDto;
+import com.example.javaspringmarket.domain.dto.customer.CustomerUpdateDto;
 import com.example.javaspringmarket.persistence.entity.CustomerEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -17,5 +19,8 @@ public interface CustomerMapper {
     @InheritInverseConfiguration
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "purchases", ignore = true)
-    CustomerEntity toEntity(CustomerDto customer);
+    CustomerEntity toCreateEntity(CustomerCreateDto customer);
+
+    @Mapping(target = "purchases", ignore = true)
+    CustomerEntity toUpdateEntity(CustomerUpdateDto customer);
 }
