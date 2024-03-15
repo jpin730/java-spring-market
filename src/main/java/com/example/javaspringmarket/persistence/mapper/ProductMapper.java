@@ -1,27 +1,23 @@
 package com.example.javaspringmarket.persistence.mapper;
 
+import com.example.javaspringmarket.domain.dto.ProductCreateDto;
 import com.example.javaspringmarket.domain.dto.ProductDto;
 import com.example.javaspringmarket.persistence.entity.ProductEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface ProductMapper {
-    @Mappings({
-            @Mapping(target = "active", source = "status"),
-            @Mapping(target = "category", source = "category"),
-    })
-    ProductDto toProduct(ProductEntity product);
+    ProductDto toDto(ProductEntity product);
 
-    List<ProductDto> toProducts(List<ProductEntity> products);
+    List<ProductDto> toDtoList(List<ProductEntity> products);
 
     @InheritInverseConfiguration
-    @Mappings({
-            @Mapping(target = "purchases", ignore = true),
-    })
-    ProductEntity toProductEntity(ProductDto product);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "category", ignore = true)
+    @Mapping(target = "purchaseItems", ignore = true)
+    ProductEntity toEntity(ProductCreateDto product);
 }

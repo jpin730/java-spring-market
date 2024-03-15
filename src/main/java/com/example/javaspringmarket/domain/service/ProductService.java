@@ -1,6 +1,8 @@
 package com.example.javaspringmarket.domain.service;
 
+import com.example.javaspringmarket.domain.dto.ProductCreateDto;
 import com.example.javaspringmarket.domain.dto.ProductDto;
+import com.example.javaspringmarket.domain.dto.ProductUpdateDto;
 import com.example.javaspringmarket.domain.repository.ProductRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,42 +19,24 @@ public class ProductService {
         return productRepository.getAll();
     }
 
-    public Optional<ProductDto> getById(int id) {
+    public Optional<ProductDto> getById(Integer id) {
         return productRepository.getById(id);
     }
 
-    public Optional<List<ProductDto>> getByCategory(int categoryId) {
-        return productRepository.getByCategory(categoryId);
-    }
-
-    public Optional<List<ProductDto>> getScarceProducts(int quantity) {
-        return productRepository.getScarceProducts(quantity);
-    }
-
-    public ProductDto save(ProductDto product) {
+    public ProductDto create(ProductCreateDto product) {
         return productRepository.save(product);
     }
 
-    public ProductDto update(int productId, ProductDto product) {
-        Optional<ProductDto> productToUpdate = getById(productId);
-        if (productToUpdate.isEmpty()) {
-            return null;
-        }
-        productToUpdate.map(product1 -> {
-            product1.setName(product.getName());
-            product1.setCategoryId(product.getCategoryId());
-            product1.setPrice(product.getPrice());
-            product1.setStock(product.getStock());
-            product1.setActive(product.isActive());
-            return productRepository.save(product1);
-        });
-
-        return productToUpdate.get();
+    public Boolean update(ProductUpdateDto body) {
+        return getById(body.getId()).map(found -> {
+            productRepository.save(body);
+            return true;
+        }).orElse(false);
     }
 
-    public boolean delete(int productId) {
-        return getById(productId).map(product -> {
-            productRepository.delete(productId);
+    public Boolean delete(Integer id) {
+        return getById(id).map(product -> {
+            productRepository.delete(id);
             return true;
         }).orElse(false);
     }
