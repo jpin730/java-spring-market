@@ -1,8 +1,8 @@
 package com.example.javaspringmarket.web.controller;
 
-import com.example.javaspringmarket.domain.dto.CategoryCreateDto;
-import com.example.javaspringmarket.domain.dto.CategoryDto;
-import com.example.javaspringmarket.domain.dto.CategoryUpdateDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryCreateDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryUpdateDto;
 import com.example.javaspringmarket.domain.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

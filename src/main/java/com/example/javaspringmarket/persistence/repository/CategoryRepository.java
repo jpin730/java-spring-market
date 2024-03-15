@@ -1,7 +1,7 @@
 package com.example.javaspringmarket.persistence.repository;
 
-import com.example.javaspringmarket.domain.dto.CategoryCreateDto;
-import com.example.javaspringmarket.domain.dto.CategoryDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryCreateDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryDto;
 import com.example.javaspringmarket.domain.repository.CategoryRepositoryInterface;
 import com.example.javaspringmarket.persistence.crud.CategoryCrudRepository;
 import com.example.javaspringmarket.persistence.entity.CategoryEntity;

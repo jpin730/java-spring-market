@@ -1,6 +1,6 @@
 package com.example.javaspringmarket.domain.dto.product;
 
-import com.example.javaspringmarket.domain.dto.CategoryDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryDto;
 
 public class ProductDto {
     private Integer id;

@@ -1,7 +1,7 @@
 package com.example.javaspringmarket.domain.repository;
 
-import com.example.javaspringmarket.domain.dto.CategoryCreateDto;
-import com.example.javaspringmarket.domain.dto.CategoryDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryCreateDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryDto;
 
 import java.util.List;
 import java.util.Optional;

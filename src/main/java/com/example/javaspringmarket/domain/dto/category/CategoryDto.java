@@ -1,4 +1,4 @@
-package com.example.javaspringmarket.domain.dto;
+package com.example.javaspringmarket.domain.dto.category;
 
 public class CategoryDto {
     private Integer id;
