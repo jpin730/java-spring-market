@@ -11,9 +11,7 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String description;
-
-    private Boolean status;
+    private String name;
 
     @OneToMany(mappedBy = "category")
     private List<ProductEntity> products;
@@ -26,19 +24,19 @@ public class CategoryEntity {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public List<ProductEntity> getProducts() {
+        return products;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setProducts(List<ProductEntity> products) {
+        this.products = products;
     }
 }

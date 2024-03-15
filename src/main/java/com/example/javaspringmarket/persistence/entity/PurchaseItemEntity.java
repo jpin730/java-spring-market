@@ -3,16 +3,14 @@ package com.example.javaspringmarket.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "purchase_product")
-public class PurchaseProductEntity {
+@Table(name = "purchase_item")
+public class PurchaseItemEntity {
     @EmbeddedId
     private PurchaseProductPk id;
 
     private Integer quantity;
 
     private Double total;
-
-    private Boolean status;
 
     @ManyToOne
     @MapsId("purchaseId")
@@ -45,14 +43,6 @@ public class PurchaseProductEntity {
 
     public void setTotal(Double total) {
         this.total = total;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
     public PurchaseEntity getPurchase() {

@@ -1,7 +1,7 @@
 package com.example.javaspringmarket.persistence.mapper;
 
 import com.example.javaspringmarket.domain.dto.PurchaseItemDto;
-import com.example.javaspringmarket.persistence.entity.PurchaseProductEntity;
+import com.example.javaspringmarket.persistence.entity.PurchaseItemEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,7 +13,7 @@ public interface PurchaseItemMapper {
             @Mapping(target = "productId", source = "id.productId"),
             @Mapping(target = "active", source = "status"),
     })
-    PurchaseItemDto toPurchaseItem(PurchaseProductEntity purchaseProduct);
+    PurchaseItemDto toPurchaseItem(PurchaseItemEntity purchaseProduct);
 
     @InheritInverseConfiguration
     @Mappings({
@@ -21,5 +21,5 @@ public interface PurchaseItemMapper {
             @Mapping(target = "product", ignore = true),
             @Mapping(target = "id.purchaseId", ignore = true),
     })
-    PurchaseProductEntity toPurchaseProduct(PurchaseItemDto purchaseItem);
+    PurchaseItemEntity toPurchaseProduct(PurchaseItemDto purchaseItem);
 }

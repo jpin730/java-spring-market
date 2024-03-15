@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
     @Mappings({
-            @Mapping(target = "name", source = "description"),
+            @Mapping(target = "name", source = "name"),
             @Mapping(target = "active", source = "status")
     })
     CategoryDto toCategory(CategoryEntity categoryEntity);

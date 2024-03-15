@@ -6,15 +6,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "full_name")
-    private String fullName;
-
-    private String email;
+    private String name;
 
     @OneToMany(mappedBy = "customer")
     private List<PurchaseEntity> purchases;
@@ -27,19 +24,19 @@ public class Customer {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getName() {
+        return name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public List<PurchaseEntity> getPurchases() {
+        return purchases;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPurchases(List<PurchaseEntity> purchases) {
+        this.purchases = purchases;
     }
 }

@@ -10,19 +10,20 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
+    private Double price;
+
     @Column(name = "category_id")
     private Integer categoryId;
-    private Double price;
-    private Integer stock;
-    private Boolean status;
 
     @ManyToOne
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
     private CategoryEntity category;
 
     @OneToMany(mappedBy = "product")
-    private List<PurchaseProductEntity> purchases;
+    private List<PurchaseItemEntity> purchaseItems;
 
     public Integer getId() {
         return id;
@@ -40,14 +41,6 @@ public class ProductEntity {
         this.name = name;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -56,20 +49,12 @@ public class ProductEntity {
         this.price = price;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public CategoryEntity getCategory() {
@@ -80,11 +65,11 @@ public class ProductEntity {
         this.category = category;
     }
 
-    public List<PurchaseProductEntity> getPurchases() {
-        return purchases;
+    public List<PurchaseItemEntity> getPurchaseItems() {
+        return purchaseItems;
     }
 
-    public void setPurchases(List<PurchaseProductEntity> purchases) {
-        this.purchases = purchases;
+    public void setPurchaseItems(List<PurchaseItemEntity> purchaseItems) {
+        this.purchaseItems = purchaseItems;
     }
 }

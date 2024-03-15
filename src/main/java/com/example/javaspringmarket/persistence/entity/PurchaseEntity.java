@@ -2,7 +2,6 @@ package com.example.javaspringmarket.persistence.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -12,19 +11,19 @@ public class PurchaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private Double total;
+
+    private Boolean paid;
+
     @Column(name = "customer_id")
     private String customerId;
 
-    private LocalDateTime date;
-
-    private String state;
-
     @ManyToOne
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-    private Customer customer;
+    private CustomerEntity customer;
 
     @OneToMany(mappedBy = "purchase", cascade = {CascadeType.ALL})
-    private List<PurchaseProductEntity> products;
+    private List<PurchaseItemEntity> items;
 
     public Integer getId() {
         return id;
@@ -32,6 +31,22 @@ public class PurchaseEntity {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Boolean getPaid() {
+        return paid;
+    }
+
+    public void setPaid(Boolean paid) {
+        this.paid = paid;
     }
 
     public String getCustomerId() {
@@ -42,35 +57,19 @@ public class PurchaseEntity {
         this.customerId = customerId;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public Customer getCustomer() {
+    public CustomerEntity getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomerEntity customer) {
         this.customer = customer;
     }
 
-    public List<PurchaseProductEntity> getProducts() {
-        return products;
+    public List<PurchaseItemEntity> getItems() {
+        return items;
     }
 
-    public void setProducts(List<PurchaseProductEntity> products) {
-        this.products = products;
+    public void setItems(List<PurchaseItemEntity> items) {
+        this.items = items;
     }
 }
