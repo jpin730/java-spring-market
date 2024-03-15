@@ -1,54 +1,31 @@
 package com.example.javaspringmarket.domain.dto;
 
-import com.example.javaspringmarket.persistence.entity.PurchaseItemEntity;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
 public class PurchaseDto {
-    private int id;
-    private int customerId;
-    private LocalDateTime date;
-    private String state;
-    private List<PurchaseItemEntity> products;
+    private Integer id;
+    private Double total;
+    private Boolean paid;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public Double getTotal() {
+        return total;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public Boolean getPaid() {
+        return paid;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public List<PurchaseItemEntity> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<PurchaseItemEntity> products) {
-        this.products = products;
+    public void setPaid(Boolean paid) {
+        this.paid = paid;
     }
 }
