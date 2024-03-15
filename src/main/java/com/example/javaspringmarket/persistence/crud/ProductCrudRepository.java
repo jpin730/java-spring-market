@@ -6,5 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ProductCrudRepository extends CrudRepository<ProductEntity, Integer> {
-    List<ProductEntity> findByCategoryId(Integer categoryId);
+    List<ProductEntity> findAllByOrderByIdAsc();
+
+    List<ProductEntity> findByCategoryIdOrderByIdAsc(Integer categoryId);
 }

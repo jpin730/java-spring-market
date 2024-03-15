@@ -2,6 +2,7 @@ package com.example.javaspringmarket.persistence.repository;
 
 import com.example.javaspringmarket.domain.dto.category.CategoryCreateDto;
 import com.example.javaspringmarket.domain.dto.category.CategoryDto;
+import com.example.javaspringmarket.domain.dto.category.CategoryUpdateDto;
 import com.example.javaspringmarket.domain.repository.CategoryRepositoryInterface;
 import com.example.javaspringmarket.persistence.crud.CategoryCrudRepository;
 import com.example.javaspringmarket.persistence.entity.CategoryEntity;
@@ -22,7 +23,7 @@ public class CategoryRepository implements CategoryRepositoryInterface {
 
     @Override
     public List<CategoryDto> getAll() {
-        List<CategoryEntity> entities = (List<CategoryEntity>) categoryCrudRepository.findAll();
+        List<CategoryEntity> entities = categoryCrudRepository.findAllByOrderByIdAsc();
         return categoryMapper.toDtoList(entities);
     }
 
@@ -34,8 +35,14 @@ public class CategoryRepository implements CategoryRepositoryInterface {
 
     @Override
     public CategoryDto save(CategoryCreateDto category) {
-        CategoryEntity entity = categoryMapper.toEntity(category);
+        CategoryEntity entity = categoryMapper.toCreateEntity(category);
         return categoryMapper.toDto(categoryCrudRepository.save(entity));
+    }
+
+    @Override
+    public void update(CategoryUpdateDto category) {
+        CategoryEntity entity = categoryMapper.toUpdateEntity(category);
+        categoryCrudRepository.save(entity);
     }
 
     @Override

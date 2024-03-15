@@ -29,7 +29,7 @@ public class ProductService {
 
     public Boolean update(ProductUpdateDto product) {
         return getById(product.getId()).map(found -> {
-            productRepository.save(product);
+            productRepository.update(product);
             return true;
         }).orElse(false);
     }

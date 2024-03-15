@@ -29,7 +29,7 @@ public class CategoryService {
 
     public Boolean update(CategoryUpdateDto category) {
         return getById(category.getId()).map(found -> {
-            categoryRepository.save(category);
+            categoryRepository.update(category);
             return true;
         }).orElse(false);
     }

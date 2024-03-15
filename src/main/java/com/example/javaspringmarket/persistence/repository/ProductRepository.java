@@ -2,6 +2,7 @@ package com.example.javaspringmarket.persistence.repository;
 
 import com.example.javaspringmarket.domain.dto.product.ProductCreateDto;
 import com.example.javaspringmarket.domain.dto.product.ProductDto;
+import com.example.javaspringmarket.domain.dto.product.ProductUpdateDto;
 import com.example.javaspringmarket.domain.repository.ProductRepositoryInterface;
 import com.example.javaspringmarket.persistence.crud.ProductCrudRepository;
 import com.example.javaspringmarket.persistence.entity.ProductEntity;
@@ -22,13 +23,13 @@ public class ProductRepository implements ProductRepositoryInterface {
 
     @Override
     public List<ProductDto> getAll() {
-        List<ProductEntity> entities = (List<ProductEntity>) productCrudRepository.findAll();
+        List<ProductEntity> entities = productCrudRepository.findAllByOrderByIdAsc();
         return productMapper.toDtoList(entities);
     }
 
     @Override
     public List<ProductDto> getByCategory(Integer categoryId) {
-        List<ProductEntity> entities = productCrudRepository.findByCategoryId(categoryId);
+        List<ProductEntity> entities = productCrudRepository.findByCategoryIdOrderByIdAsc(categoryId);
         return productMapper.toDtoList(entities);
     }
 
@@ -40,8 +41,14 @@ public class ProductRepository implements ProductRepositoryInterface {
 
     @Override
     public ProductDto save(ProductCreateDto product) {
-        ProductEntity entity = productMapper.toEntity(product);
+        ProductEntity entity = productMapper.toCreateEntity(product);
         return productMapper.toDto(productCrudRepository.save(entity));
+    }
+
+    @Override
+    public void update(ProductUpdateDto product) {
+        ProductEntity entity = productMapper.toUpdateEntity(product);
+        productCrudRepository.save(entity);
     }
 
     @Override
