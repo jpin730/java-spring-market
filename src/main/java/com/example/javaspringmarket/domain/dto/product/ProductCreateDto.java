@@ -1,4 +1,4 @@
-package com.example.javaspringmarket.domain.dto;
+package com.example.javaspringmarket.domain.dto.product;
 
 public class ProductCreateDto {
     private String name;

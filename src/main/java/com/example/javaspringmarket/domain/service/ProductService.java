@@ -1,8 +1,8 @@
 package com.example.javaspringmarket.domain.service;
 
-import com.example.javaspringmarket.domain.dto.ProductCreateDto;
-import com.example.javaspringmarket.domain.dto.ProductDto;
-import com.example.javaspringmarket.domain.dto.ProductUpdateDto;
+import com.example.javaspringmarket.domain.dto.product.ProductCreateDto;
+import com.example.javaspringmarket.domain.dto.product.ProductDto;
+import com.example.javaspringmarket.domain.dto.product.ProductUpdateDto;
 import com.example.javaspringmarket.domain.repository.ProductRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.example.javaspringmarket.persistence.repository;
 
-import com.example.javaspringmarket.domain.dto.ProductCreateDto;
-import com.example.javaspringmarket.domain.dto.ProductDto;
+import com.example.javaspringmarket.domain.dto.product.ProductCreateDto;
+import com.example.javaspringmarket.domain.dto.product.ProductDto;
 import com.example.javaspringmarket.domain.repository.ProductRepositoryInterface;
 import com.example.javaspringmarket.persistence.crud.ProductCrudRepository;
 import com.example.javaspringmarket.persistence.entity.ProductEntity;

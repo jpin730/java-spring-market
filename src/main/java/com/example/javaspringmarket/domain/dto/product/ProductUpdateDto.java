@@ -1,4 +1,4 @@
-package com.example.javaspringmarket.domain.dto;
+package com.example.javaspringmarket.domain.dto.product;
 
 public class ProductUpdateDto extends ProductCreateDto {
     private Integer id;

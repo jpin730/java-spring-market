@@ -1,7 +1,7 @@
 package com.example.javaspringmarket.persistence.mapper;
 
-import com.example.javaspringmarket.domain.dto.ProductCreateDto;
-import com.example.javaspringmarket.domain.dto.ProductDto;
+import com.example.javaspringmarket.domain.dto.product.ProductCreateDto;
+import com.example.javaspringmarket.domain.dto.product.ProductDto;
 import com.example.javaspringmarket.persistence.entity.ProductEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
