@@ -2,33 +2,38 @@ package com.example.javaspringmarket.web.controller;
 
 import com.example.javaspringmarket.domain.dto.product.ProductUpdateDto;
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseCreateDto;
+import com.example.javaspringmarket.domain.service.PurchaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/purchases")
 public class PurchaseController {
+    @Autowired
+    private PurchaseService purchaseService;
+
     @GetMapping
-    public String getAll(@RequestParam(value = "customer", required = false) Integer userId) {
-        return "Get all purchases" + (userId != null ? " by user" : "");
+    public String getAll(@RequestParam(value = "customer", required = false) Integer customerId) {
+        return customerId != null ? purchaseService.getByCustomer(customerId) : purchaseService.getAll();
     }
 
     @GetMapping("/{id}")
     public String getById(@PathVariable Integer id) {
-        return "Get purchase by id";
+        return purchaseService.getById(id);
     }
 
     @PostMapping
     public String create(@RequestBody PurchaseCreateDto body) {
-        return "Create purchase";
+        return purchaseService.create(body);
     }
 
     @PutMapping
     public String update(@RequestBody ProductUpdateDto body) {
-        return "Update purchase";
+        return purchaseService.update(body);
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Integer id) {
-        return "Delete purchase";
+        return purchaseService.delete(id);
     }
 }
