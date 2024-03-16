@@ -1,32 +1,48 @@
 package com.example.javaspringmarket.domain.service;
 
-import com.example.javaspringmarket.domain.dto.product.ProductUpdateDto;
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseCreateDto;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseDto;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseUpdateDto;
+import com.example.javaspringmarket.domain.repository.PurchaseRepositoryInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PurchaseService {
-    public String getAll() {
-        return "getAll purchases";
+    @Autowired
+    private PurchaseRepositoryInterface purchaseRepository;
+
+    public List<PurchaseDto> getAll() {
+        return purchaseRepository.getAll();
     }
 
-    public String getByCustomer(Integer customerId) {
-        return "get purchases by customer id: " + customerId;
+    public List<PurchaseDto> getByCustomer(Integer customerId) {
+        return purchaseRepository.getByCustomer(customerId);
     }
 
-    public String getById(Integer id) {
-        return "get purchase by id: " + id;
+    public Optional<PurchaseDto> getById(Integer id) {
+        return purchaseRepository.getById(id);
     }
 
-    public String create(PurchaseCreateDto purchase) {
-        return "create purchase";
+    public PurchaseDto create(PurchaseCreateDto purchase) {
+        return purchaseRepository.save(purchase);
     }
 
-    public String update(ProductUpdateDto purchase) {
-        return "update purchase";
+    public Boolean update(PurchaseUpdateDto purchase) {
+        return getById(purchase.getId()).map(found -> {
+            found.setPaid(purchase.getPaid());
+            purchaseRepository.update(found);
+            return true;
+        }).orElse(false);
     }
 
-    public String delete(Integer id) {
-        return "delete purchase by id: " + id;
+    public Boolean delete(Integer id) {
+        return getById(id).map(purchase -> {
+            purchaseRepository.delete(id);
+            return true;
+        }).orElse(false);
     }
 }
