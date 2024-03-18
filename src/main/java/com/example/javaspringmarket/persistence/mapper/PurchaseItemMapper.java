@@ -1,25 +1,27 @@
 package com.example.javaspringmarket.persistence.mapper;
 
-import com.example.javaspringmarket.domain.dto.PurchaseItemDto;
+import com.example.javaspringmarket.domain.dto.purchase_item.PurchaseItemCreateDto;
+import com.example.javaspringmarket.domain.dto.purchase_item.PurchaseItemDto;
+import com.example.javaspringmarket.domain.dto.purchase_item.PurchaseItemUpdateDto;
 import com.example.javaspringmarket.persistence.entity.PurchaseItemEntity;
-import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring", uses = {ProductMapper.class})
+@Mapper(componentModel = "spring")
 public interface PurchaseItemMapper {
-    @Mappings({
-            @Mapping(target = "productId", source = "id.productId"),
-            @Mapping(target = "active", source = "status"),
-    })
-    PurchaseItemDto toPurchaseItem(PurchaseItemEntity purchaseProduct);
+    @Mapping(target = "productId", source = "id.productId")
+    PurchaseItemDto toDto(PurchaseItemEntity purchaseItem);
 
-    @InheritInverseConfiguration
-    @Mappings({
-            @Mapping(target = "purchase", ignore = true),
-            @Mapping(target = "product", ignore = true),
-            @Mapping(target = "id.purchaseId", ignore = true),
-    })
-    PurchaseItemEntity toPurchaseProduct(PurchaseItemDto purchaseItem);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "total", ignore = true)
+    @Mapping(target = "purchase", ignore = true)
+    @Mapping(target = "product", ignore = true)
+    PurchaseItemEntity toCreateEntity(PurchaseItemCreateDto purchaseItem);
+
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "total", ignore = true)
+    @Mapping(target = "purchase", ignore = true)
+    @Mapping(target = "product", ignore = true)
+    PurchaseItemEntity toUpdateEntity(PurchaseItemUpdateDto purchaseItem);
 }
