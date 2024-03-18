@@ -54,7 +54,17 @@ public class PurchaseItemRepository implements PurchaseItemRepositoryInterface {
         PurchaseItemEntity entity = purchaseItemMapper.toCreateEntity(purchaseItem);
         entity.setId(pk);
         entity.setTotal(purchaseItem.getQuantity() * pk.getProduct().getPrice());
-        return Optional.of(purchaseItemMapper.toDto(purchaseItemCrudRepository.save(entity)));
+        PurchaseItemEntity saved = purchaseItemCrudRepository.save(entity);
+
+        Optional<PurchaseEntity> purchaseEntity = purchaseCrudRepository.findById(pk.getPurchase().getId());
+
+        return purchaseEntity.map(purchase -> {
+            Double total = purchase.getItems().stream()
+                    .mapToDouble(PurchaseItemEntity::getTotal).sum();
+            purchase.setTotal(total);
+            purchaseCrudRepository.save(purchase);
+            return purchaseItemMapper.toDto(saved);
+        });
     }
 
     @Override
