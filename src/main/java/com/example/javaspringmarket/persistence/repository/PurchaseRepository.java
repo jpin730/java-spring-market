@@ -2,6 +2,7 @@ package com.example.javaspringmarket.persistence.repository;
 
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseCreateDto;
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseDto;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseListDto;
 import com.example.javaspringmarket.domain.repository.PurchaseRepositoryInterface;
 import com.example.javaspringmarket.persistence.crud.PurchaseCrudRepository;
 import com.example.javaspringmarket.persistence.entity.PurchaseEntity;
@@ -21,13 +22,13 @@ public class PurchaseRepository implements PurchaseRepositoryInterface {
     private PurchaseMapper purchaseMapper;
 
     @Override
-    public List<PurchaseDto> getAll() {
+    public List<PurchaseListDto> getAll() {
         List<PurchaseEntity> entities = purchaseCrudRepository.findAllByOrderByIdAsc();
         return purchaseMapper.toDtoList(entities);
     }
 
     @Override
-    public List<PurchaseDto> getByCustomer(Integer customerId) {
+    public List<PurchaseListDto> getByCustomer(Integer customerId) {
         List<PurchaseEntity> entities = purchaseCrudRepository.findByCustomerIdOrderByIdAsc(customerId);
         return purchaseMapper.toDtoList(entities);
     }

@@ -2,6 +2,7 @@ package com.example.javaspringmarket.domain.service;
 
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseCreateDto;
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseDto;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseListDto;
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseUpdateDto;
 import com.example.javaspringmarket.domain.repository.PurchaseRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,11 @@ public class PurchaseService {
     @Autowired
     private PurchaseRepositoryInterface purchaseRepository;
 
-    public List<PurchaseDto> getAll() {
+    public List<PurchaseListDto> getAll() {
         return purchaseRepository.getAll();
     }
 
-    public List<PurchaseDto> getByCustomer(Integer customerId) {
+    public List<PurchaseListDto> getByCustomer(Integer customerId) {
         return purchaseRepository.getByCustomer(customerId);
     }
 

@@ -2,6 +2,7 @@ package com.example.javaspringmarket.web.controller;
 
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseCreateDto;
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseDto;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseListDto;
 import com.example.javaspringmarket.domain.dto.purchase.PurchaseUpdateDto;
 import com.example.javaspringmarket.domain.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class PurchaseController {
     private PurchaseService purchaseService;
 
     @GetMapping
-    public ResponseEntity<List<PurchaseDto>> getAll(@RequestParam(value = "customer", required = false) Integer customerId) {
-        List<PurchaseDto> purchases = customerId != null ? purchaseService.getByCustomer(customerId) : purchaseService.getAll();
+    public ResponseEntity<List<PurchaseListDto>> getAll(@RequestParam(value = "customer", required = false) Integer customerId) {
+        List<PurchaseListDto> purchases = customerId != null ? purchaseService.getByCustomer(customerId) : purchaseService.getAll();
         return new ResponseEntity<>(purchases, HttpStatus.OK);
     }
 

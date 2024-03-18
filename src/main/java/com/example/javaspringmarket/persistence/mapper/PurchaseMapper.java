@@ -1,19 +1,21 @@
 package com.example.javaspringmarket.persistence.mapper;
 
-import com.example.javaspringmarket.domain.dto.purchase.PurchaseCreateDto;
-import com.example.javaspringmarket.domain.dto.purchase.PurchaseDto;
-import com.example.javaspringmarket.persistence.entity.PurchaseEntity;
+import java.util.List;
+
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.util.List;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseCreateDto;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseDto;
+import com.example.javaspringmarket.domain.dto.purchase.PurchaseListDto;
+import com.example.javaspringmarket.persistence.entity.PurchaseEntity;
 
-@Mapper(componentModel = "spring", uses = {CustomerMapper.class})
+@Mapper(componentModel = "spring", uses = {CustomerMapper.class, PurchaseItemMapper.class})
 public interface PurchaseMapper {
     PurchaseDto toDto(PurchaseEntity purchase);
 
-    List<PurchaseDto> toDtoList(List<PurchaseEntity> purchases);
+    List<PurchaseListDto> toDtoList(List<PurchaseEntity> purchases);
 
     @InheritInverseConfiguration
     @Mapping(target = "id", ignore = true)
