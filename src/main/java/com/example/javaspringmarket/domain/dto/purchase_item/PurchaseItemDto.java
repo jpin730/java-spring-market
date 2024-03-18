@@ -1,9 +1,12 @@
 package com.example.javaspringmarket.domain.dto.purchase_item;
 
+import com.example.javaspringmarket.domain.dto.product.ProductDto;
+
 public class PurchaseItemDto {
     private Integer quantity;
     private Double total;
-    private Integer productId;
+    private Integer purchaseId;
+    private ProductDto product;
 
     public Integer getQuantity() {
         return quantity;
@@ -21,11 +24,19 @@ public class PurchaseItemDto {
         this.total = total;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public Integer getPurchaseId() {
+        return purchaseId;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setPurchaseId(Integer purchaseId) {
+        this.purchaseId = purchaseId;
+    }
+
+    public ProductDto getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductDto product) {
+        this.product = product;
     }
 }

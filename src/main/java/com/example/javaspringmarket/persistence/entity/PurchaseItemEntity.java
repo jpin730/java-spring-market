@@ -1,31 +1,24 @@
 package com.example.javaspringmarket.persistence.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "purchase_item")
 public class PurchaseItemEntity {
     @EmbeddedId
-    private PurchaseProductPk id;
+    private PurchaseItemPk id;
 
     private Integer quantity;
 
     private Double total;
 
-    @ManyToOne
-    @MapsId("purchaseId")
-    @JoinColumn(name = "purchase_id", insertable = false, updatable = false)
-    private PurchaseEntity purchase;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private ProductEntity product;
-
-    public PurchaseProductPk getId() {
+    public PurchaseItemPk getId() {
         return id;
     }
 
-    public void setId(PurchaseProductPk id) {
+    public void setId(PurchaseItemPk id) {
         this.id = id;
     }
 
@@ -43,21 +36,5 @@ public class PurchaseItemEntity {
 
     public void setTotal(Double total) {
         this.total = total;
-    }
-
-    public PurchaseEntity getPurchase() {
-        return purchase;
-    }
-
-    public void setPurchase(PurchaseEntity purchase) {
-        this.purchase = purchase;
-    }
-
-    public ProductEntity getProduct() {
-        return product;
-    }
-
-    public void setProduct(ProductEntity product) {
-        this.product = product;
     }
 }

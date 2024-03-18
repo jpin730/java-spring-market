@@ -7,21 +7,25 @@ import com.example.javaspringmarket.persistence.entity.PurchaseItemEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface PurchaseItemMapper {
-    @Mapping(target = "productId", source = "id.productId")
+    @Mapping(target = "purchaseId", source = "id.purchase.id")
+    @Mapping(target = "product.id", source = "id.product.id")
+    @Mapping(target = "product.name", source = "id.product.name")
+    @Mapping(target = "product.price", source = "id.product.price")
+    @Mapping(target = "product.category", ignore = true)
     PurchaseItemDto toDto(PurchaseItemEntity purchaseItem);
+
+    List<PurchaseItemDto> toDtoList(List<PurchaseItemEntity> purchaseItems);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "total", ignore = true)
-    @Mapping(target = "purchase", ignore = true)
-    @Mapping(target = "product", ignore = true)
     PurchaseItemEntity toCreateEntity(PurchaseItemCreateDto purchaseItem);
 
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "total", ignore = true)
-    @Mapping(target = "purchase", ignore = true)
-    @Mapping(target = "product", ignore = true)
     PurchaseItemEntity toUpdateEntity(PurchaseItemUpdateDto purchaseItem);
 }

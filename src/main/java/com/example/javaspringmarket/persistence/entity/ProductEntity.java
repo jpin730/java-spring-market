@@ -22,7 +22,7 @@ public class ProductEntity {
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
     private CategoryEntity category;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "id.product")
     private List<PurchaseItemEntity> purchaseItems;
 
     public Integer getId() {

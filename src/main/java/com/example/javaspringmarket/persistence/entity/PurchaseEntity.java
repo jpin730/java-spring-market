@@ -22,7 +22,7 @@ public class PurchaseEntity {
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     private CustomerEntity customer;
 
-    @OneToMany(mappedBy = "purchase", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "id.purchase", cascade = {CascadeType.ALL})
     private List<PurchaseItemEntity> items;
 
     public Integer getId() {
