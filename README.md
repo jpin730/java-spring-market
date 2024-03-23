@@ -17,3 +17,15 @@ For stop PGAdmin, you need to run the following command:
 ```bash
 docker-compose down
 ```
+
+## Entity-Relationship Diagram
+
+The following diagram shows the entity-relationship model of the application:
+
+![ER Diagram](./erd.png)
+
+## Frontend
+
+The frontend of the application is implemented with Angular and Tailwind CSS.
+
+<https://angular-spring-market.vercel.app>

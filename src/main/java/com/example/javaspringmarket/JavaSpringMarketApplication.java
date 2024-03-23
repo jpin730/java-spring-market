@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Java Spring Market", version = "1.0"))
+@OpenAPIDefinition(info = @Info(title = "Java Spring Market", version = "1.0", description = "Frontend (Angular): https://angular-spring-market.vercel.app"))
 public class JavaSpringMarketApplication {
 
     public static void main(String[] args) {
