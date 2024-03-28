@@ -69,7 +69,18 @@ public class PurchaseItemRepository implements PurchaseItemRepositoryInterface {
 
     @Override
     public void delete(PurchaseItemPk pk) {
+        Integer purcahseId = pk.getPurchase().getId();
+
         purchaseItemCrudRepository.deleteById(pk);
+
+        Optional<PurchaseEntity> purchaseEntity = purchaseCrudRepository.findById(purcahseId);
+
+        purchaseEntity.ifPresent(purchase -> {
+            Double total = purchase.getItems().stream()
+                    .mapToDouble(PurchaseItemEntity::getTotal).sum();
+            purchase.setTotal(total);
+            purchaseCrudRepository.save(purchase);
+        });
     }
 
     public Optional<PurchaseItemPk> getPk(Integer purchaseId, Integer productId) {
