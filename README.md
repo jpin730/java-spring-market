@@ -24,12 +24,6 @@ The following diagram shows the entity-relationship model of the application:
 
 ![ER Diagram](./erd.png)
 
-## Deployment
-
-<https://java-spring-market.onrender.com/api>
-
-The frontend of the application is implemented with Angular and Tailwind CSS.
-
-<https://angular-spring-market.vercel.app>
+## Frontend Repository
 
 <https://github.com/jpin730/angular-spring-market>
